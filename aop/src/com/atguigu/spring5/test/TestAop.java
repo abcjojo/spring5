@@ -8,15 +8,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class TestAop {
 
     @Test
     public void test3() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(ProxyConfig.class);
-        User user = context.getBean("user", User.class);
-        user.add();
+        String s = "https://item.jd.com/10032531562978.html";
+        String[] split = s.split("/");
+        System.out.println(Arrays.toString(split));
+        System.out.println(split[2]);
+
+
     }
 
     @Test

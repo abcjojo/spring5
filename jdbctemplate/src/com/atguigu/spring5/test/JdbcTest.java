@@ -5,10 +5,30 @@ import com.atguigu.spring5.service.BookService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.ArrayList;
 
 public class JdbcTest {
+
+    /**
+     * 函数式风格创建对象，交给Spring进行管理
+     */
+    @Test
+    public void test9() {
+        //1、创建GenericApplicationContext对象
+        GenericApplicationContext context = new GenericApplicationContext();
+        // 2 调用context的方法对象注册
+        context.refresh();  // 清空context，然后创建对象
+        context.registerBean(User.class, () -> new User());
+
+        // 3 获取在String注册的对象
+        User user = (User) context.getBean("com.atguigu.spring5.test.User");
+        System.out.println(user);
+
+    }
+
+
 
     @Test
     public void test8() {
