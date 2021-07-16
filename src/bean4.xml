@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--集合类型属性注入-->
+    <bean id="stu" class="com.atguigu.demo2.collectiontype.Stu">
+<!--        数组类型属性注入  list标签和array标签都可以 -->
+        <property name="courses">
+            <array>
+                <value>Java课程</value>
+                <value>数据库课程</value>
+            </array>
+        </property>
+
+<!--        list属性注入-->
+        <property name="list">
+            <list>
+                <value>大儿子</value>
+                <value>二儿子</value>
+            </list>
+        </property>
+
+<!--        map集合属性注入-->
+        <property name="maps">
+            <map>
+                <entry key="java" value="JAVA"></entry>
+                <entry key="php" value="PHP"></entry>
+            </map>
+        </property>
+
+<!--        set集合属性注入-->
+        <property name="set">
+            <set>
+                <value>mysql</value>
+                <value>redis</value>
+            </set>
+        </property>
+    </bean>
+
+
+<!--    注入list集合类型， 值是对象-->
+    <bean id="stu1" class="com.atguigu.demo2.collectiontype.Stu">
+        <property name="courseList" >
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+    </bean>
+
+<!--    创建多个course对象-->
+    <bean id="course1" class="com.atguigu.demo2.collectiontype.Course">
+        <property name="cname" value="name111"/>
+    </bean>
+    <bean id="course2" class="com.atguigu.demo2.collectiontype.Course">
+        <property name="cname" value="name222"></property>
+    </bean>
+
+
+
+
+
+
+
+
+
+</beans>

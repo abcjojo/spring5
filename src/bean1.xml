@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置User对象的创建-->
+    <bean id="user" class="com.atguigu.spring5.User"/>
+
+<!--    2、set方法注入属性-->
+    <bean id="book" class="com.atguigu.spring5.Book" scope="prototype">
+<!--        使用property标签完成属性注入，
+            name: 类中的属性名称
+            value：向属性中注入的值
+            -->
+        <property name="bname" value="易筋经"/>
+        <property name="bauthor" value="欧阳锋"/>
+<!--        注入null值-->
+<!--        <property name="address"><null></null></property>-->
+        
+<!--        属性中包含特殊符号
+                两种方式 1、把特殊符号<> 进行转义： &lt;  &gt;
+                        2、把特殊符号写到CDATA中
+                -->
+        <property name="address" >
+            <value><![CDATA[<<南京>>]]></value>
+        </property>
+        
+    </bean>
+
+    <!--    2-1、p名称空间注入属性-->
+    <bean id="book1" class="com.atguigu.spring5.Book" p:bname="九阳神功" p:bauthor="火头托">
+    </bean>
+
+<!--    3、有参构造器注入属性-->
+    <bean id="orders" class="com.atguigu.spring5.Orders">
+        <constructor-arg name="oname" value="computer-jingDong"></constructor-arg>
+        <constructor-arg name="address" value="beijing"></constructor-arg>
+    </bean>
+
+
+
+</beans>
