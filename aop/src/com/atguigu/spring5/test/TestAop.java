@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class TestAop {
@@ -19,6 +20,16 @@ public class TestAop {
         String[] split = s.split("/");
         System.out.println(Arrays.toString(split));
         System.out.println(split[2]);
+        System.out.println(Objects.equals(s.split("/")[2], "item.jd.com"));
+
+
+    }
+
+    @Test
+    public void test4() {
+        String s = "https://item.jd.com/10032531562978.html";
+
+        System.out.println(s.contains("item.jd.com"));
 
 
     }

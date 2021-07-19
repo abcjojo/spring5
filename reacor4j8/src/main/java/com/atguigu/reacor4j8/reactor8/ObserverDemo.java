@@ -11,7 +11,7 @@ public class ObserverDemo extends Observable {
             System.out.println("发生了变化");
         });
         observer.addObserver((o, arg) -> {
-            System.out.println("手动被观察者通知，准备改变");
+            System.out.println("收到被观察者通知，准备改变");
         });
 
         observer.setChanged();  // 数据变化
